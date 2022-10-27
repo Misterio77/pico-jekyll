@@ -58,7 +58,7 @@ Alternatively, if you want to combine pico and your custom styling into a
 single sheet, just add this into your `.scss` file:
 
 ```scss
-@import "pico/scss/pico";
+@import "pico/scss/pico.scss";
 ```
 
 All of pico's scss files are accessible this way, so feel free to import the
