@@ -1,10 +1,11 @@
+---
+---
 # pico-jekyll
 
-Welcome to your new Jekyll theme! In this directory, you'll find the files you need to be able to package up your theme into a gem. Put your layouts in `_layouts`, your includes in `_includes`, your sass files in `_sass` and any other assets in `assets`.
+This repo provides a Gem you can easily depend on to include
+[pico.css](https://picocss.com) to your website.
 
-To experiment with this code, add some sample content and run `bundle exec jekyll serve` – this directory is setup just like a Jekyll site!
-
-TODO: Delete this and the text above, and describe your gem
+A good alternative to using CDNs or including pico into your repo directly.
 
 
 ## Installation
@@ -31,22 +32,35 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here. Describe your available layouts, includes, sass and/or assets.
+### Layout
 
-## Contributing
+This theme provides a minimal `default` layout that includes the sheet in its
+head. You will usually want to have your own `_layout/default.html`, but if you
+don't, your pages that use the `default` layout (or other layout that depends
+on it) will automagically have pico.css.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/hello. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+### Assets
 
-## Development
+This theme outputs the default pico sheet into `/assets/pico.css` If you have a
+custom layout, you can simply include the following into your layout's `<head>`
+tag:
 
-To set up your environment to develop this theme, run `bundle install`.
+```html
+<link rel="stylesheet" href="/assets/pico.css">
+```
 
-Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
+The other pico sheets available at CDNs are also outputted by this theme into
+`/assets`: `pico.slim.css`, `pico.classless.css`, `pico.fluid.classless.css`.
 
-When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `pico-jekyll.gemspec` accordingly.
+### Stylesheets
 
-## License
+Alternatively, if you want to combine pico and your custom styling into a
+single sheet, just add this into your `.scss` file:
 
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+```scss
+@import "pico/scss/pico";
+```
 
+All of pico's scss files are accessible this way, so feel free to import the
+other default sheets (classless, slim, etc) or individual components if you
+need to.
